@@ -2,11 +2,15 @@
 %% Copyright (C) 2019 by Ali Shanaakh <ashanaakh@gmail.com>
 %%
 
-\documentclass[a4paper,12pt]{vakthesis}
+% Remove "notitlepage" to put back title page.
+\documentclass[a4paper,12pt,notitlepage]{vakthesis}
 
 \usepackage[T2A]{fontenc}
-\usepackage[utf8x]{inputenc}
+\usepackage[utf8x,utf8]{inputenc}
 \usepackage[ukrainian]{babel}
+
+\usepackage{geometry}
+\geometry{left=2cm,right=1cm,top=2cm,bottom=2cm}
 
 \begin{document}
 
@@ -21,7 +25,7 @@
 
 \author{Шанаах Алі Махмуд}
 
-\speciality[Інженерія програмного забезпечення]{121}
+\speciality[Інженерія програмного забезпечення]
 
 \date{2019}
 
@@ -37,10 +41,5 @@
 \input{chapters/04/main.tex}
 
 \input{conclusions}
-
-\bibliographystyle{ugost2008s}
-\bibliography{bachelor_thesis}
-
-\appendix
 
 \end{document}
