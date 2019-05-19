@@ -5,17 +5,17 @@
 %% The original source files were:
 %%
 %% vakthesis.dtx  (with options: `vakthesis')
-%% 
+%%
 %% IMPORTANT NOTICE:
-%% 
+%%
 %% For the copyright see the source file.
-%% 
+%%
 %% Any modified versions of this file must be renamed
 %% with new filenames distinct from vakthesis.cls.
-%% 
+%%
 %% For distribution of the original source see the terms
 %% for copying and modification in the file vakthesis.dtx.
-%% 
+%%
 %% This generated file may be distributed as long as the
 %% original source files, as listed above, are part of the
 %% same distribution. (The sources need not necessarily be

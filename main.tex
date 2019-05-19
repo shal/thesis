@@ -3,43 +3,72 @@
 %%
 
 % Remove "notitlepage" to put back title page.
-\documentclass[a4paper,12pt,notitlepage]{vakthesis}
+\documentclass[a4paper]{vakthesis}
 
 \usepackage[T2A]{fontenc}
-\usepackage[utf8x,utf8]{inputenc}
-\usepackage[ukrainian]{babel}
-
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian,ukrainian]{babel}
+\usepackage{cite}
 \usepackage{geometry}
+\usepackage{graphicx}
+\usepackage[bachelor]{thesis-title}
+
+% Замінити тире на кружечки.
+\renewcommand{\labelitemi}{$\bullet$}
+
 \geometry{left=2cm,right=1cm,top=2cm,bottom=2cm}
+\graphicspath{ {./images/} }
 
 \begin{document}
 
-\title{ВЕЛИКІ ТА ВІДКРИТІ ДАНІ. РОЗРОБКА ВЕБ СЕРВІСУ ДЛЯ ПОШУКУ АВТО}
+\title{ВЕЛИКІ ТА ВІДКРИТІ ДАНІ.\\РОЗРОБКА ВЕБ СЕРВІСУ ДЛЯ ПОШУКУ АВТОТРАНСПОРТУ}
 
 \supervisor{Верес Максим Миколайович}
            {кандидат фізико-математичних наук, доцент}
 
+\author{Шанаах Алі Махмуд}{студент 4-го курсу}
+
 \institution{КИЇВСЬКИЙ НАЦІОНАЛЬНИЙ УНІВЕРСИТЕТ\\
 ІМЕНІ ТАРАСА ШЕВЧЕНКА\\
-Кафедра інформаційних систем}
+Кафедра інтелектуальних програмних систем}{Київ}
 
-\author{Шанаах Алі Махмуд}
+\speciality{121 Інженерія програмного забезпечення}
 
-\speciality[Інженерія програмного забезпечення]
+\accepted{кафедри}{11}{13 травня 2019 року}{Підпис}
 
 \date{2019}
 
 \maketitle
 
+% Реферат.
+\input{abstract}
+
+% Зміст.
 \tableofcontents
 
+% Скорочення та умовні позначення.
+\input{keys}
+
+% Вступ.
 \input{introduction}
 
+% Головні розділи.
 \input{chapters/01/main.tex}
 \input{chapters/02/main.tex}
 \input{chapters/03/main.tex}
-\input{chapters/04/main.tex}
 
-\input{conclusions}
+% Висновки.
+\input{conclusion}
+
+\bibliographystyle{ugost2008s}
+
+\bibliography{main}
+
+\appendix
+
+% Додатки.
+\input{appendix/01.tex}
+\input{appendix/02.tex}
+\input{appendix/03.tex}
 
 \end{document}

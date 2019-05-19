@@ -1,0 +1,114 @@
+\ProvidesPackage{diploma-title}
+\newif\if@coursework
+\@courseworkfalse
+\def \@metatitle {Випускна кваліфікаційна робота}
+\DeclareOption{master}{ \def \@metatitle {Випускна кваліфікаційна робота магістра} }
+\DeclareOption{bachelor}{ \def \@metatitle {Кваліфікаційна робота} }
+\DeclareOption{specialist}{ \def \@metatitle {Дипломна робота спеціаліста} }
+\DeclareOption{course}{ \@courseworktrue \def \@metatitle {Курсова робота}}
+\ProcessOptions
+
+\def \@nextMetatitle {Випускна кваліфікаційна робота}
+\DeclareOption{master}{ \def \@nextMetatitle {Випускна кваліфікаційна робота магістра} }
+\DeclareOption{bachelor}{ \def \@nextMetatitle {на здобуття ступеня бакалавра} }
+\DeclareOption{specialist}{ \def \@nextMetatitle {Дипломна робота спеціаліста} }
+\DeclareOption{course}{ \@courseworktrue \def \@nextMetatitle {Курсова робота}}
+\ProcessOptions
+
+\usepackage{textcase}
+
+\def \author #1#2{
+  \def\@author{#1}
+  \def\@author@status{#2}
+}
+\author{}{}
+
+\def\institution #1#2{%
+  \def\@institution{#1}%
+  \def\@town{#2}
+}
+\institution{}{}
+
+\def\date#1{\def\@year{#1}}
+\date{}
+
+\def\speciality #1{
+  \def\@speciality{#1}
+}
+\speciality{}
+
+\def \supervisor #1#2{
+  \def\@supervisor{#1}
+  \def\@supervisor@status{#2}
+}
+\supervisor{}{}
+
+\def \accepted #1#2#3#4{
+  \def\@accepted@department{#1}
+  \def\@accepted@protocol{#2}
+  \def\@accepted@date{#3}
+  \def\@accepted@signature{#4}
+}
+\accepted{}{}{}{}
+
+\renewenvironment{titlepage}
+    {\newpage
+     \pagestyle{empty}%
+     \setcounter{page}{1}%
+     \begin{center}}%
+    {\end{center}%
+     \newpage}
+
+\def\maketitle{\begin{titlepage}%
+  \let\footnotesize\small
+  \let\footnoterule\relax
+  \let \footnote \thanks
+  \@maketitle
+  \end{titlepage}%
+  \setcounter{footnote}{0}%
+  \global\let\thanks\relax
+  \global\let\maketitle\relax
+  \global\let\@thanks\@empty
+  \global\let\@author\@empty
+  \global\let\@author@status\@empty
+  \global\let\@supervisor\@empty
+  \global\let\@supervisor@status\@empty
+  \global\let\@date\@empty
+  \global\let\@title\@empty
+  \global\let\@speciality\@empty
+  \global\let\title\relax
+  \global\let\speciality\relax
+  \global\let\author\relax
+  \global\let\date\relax
+  \global\let\and\relax
+}
+\def\@maketitle{%
+  {\scshape
+   \@ifundefined{@institution@office}{\relax}{\@institution@office\par}
+   \@institution\par}
+  \vspace{\stretch{4}}%
+  {\MakeTextUppercase{\bf \@metatitle} \\ \MakeTextUppercase{\bf \@nextMetatitle} \par \\ }
+  % {за спеціальністю \@speciality \par}
+  {на тему: \par}
+  {\bfseries\scshape \@title \par}%
+  \vspace{\stretch{3}}%
+  { \raggedleft Виконав \@author@status \\ \@author \par}%
+  \vspace{\stretch{1}}%
+  {\raggedleft
+     Науковий керівник: \\ \@supervisor@status \\ \@supervisor
+   \par}%
+  \vspace{\stretch{2}}%
+  \ifx\@accepted@signature\@empty
+    \vspace{\stretch{1}}%
+  \else
+    {Дипломна робота заслухана на засіданні \@accepted@department\\Протокол №{\@accepted@protocol} від \@accepted@date
+    \par
+    }
+    \vspace{\stretch{1}}%
+    {
+      \@accepted@signature \quad \underline{\hspace{2.5cm}}
+      \par
+    }
+  \fi
+  \vspace{\stretch{3}}%
+  \@town\ --- \@year}
