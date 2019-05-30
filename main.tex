@@ -13,6 +13,22 @@
 \usepackage{graphicx}
 \usepackage[bachelor]{thesis-title}
 
+\usepackage{listings}
+\usepackage{listings-golang} % import this package after listings
+\usepackage{color}
+
+\lstset{ % add your own preferences
+    frame=single,
+    basicstyle=\footnotesize,
+    keywordstyle=\color{red},
+    numbers=left,
+    numbersep=5pt,
+    showstringspaces=false,
+    stringstyle=\color{blue},
+    tabsize=4,
+    language=Golang % this is it !
+}
+
 % Замінити тире на кружечки.
 \renewcommand{\labelitemi}{$\bullet$}
 

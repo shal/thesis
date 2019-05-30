@@ -20,3 +20,37 @@
 \caption{Повна схема роботи системи}
 \label{fig:architecture-overview}
 \end{figure}
+
+\pagebreak
+
+\begin{lstlisting}[caption={Реалізація функції Map.},captionpos=b]
+func mapper(input chan []string, output chan model.Operation) {
+	for {
+		msg, opened := <- input
+		if !opened {
+			return
+		}
+
+		output <- *model.NewOperation(msg)
+	}
+}
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Реалізація функції Reduce.},captionpos=b]
+func reducer(input chan []model.Operation, output chan struct{}) {
+	db := database.Must(database.DB())
+	defer db.Close()
+
+	for {
+		operations, open := <-input
+		if !open {
+			output <- struct{}{}
+			return
+		}
+
+		if err := db.Insert(&operations); err != nil {
+			// Handle error.
+		}
+	}
+}
+\end{lstlisting}

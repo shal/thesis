@@ -90,25 +90,33 @@
   {\MakeTextUppercase{\bf \@metatitle} \\ \MakeTextUppercase{\bf \@nextMetatitle} \par \\ }
   % {за спеціальністю \@speciality \par}
   {на тему: \par}
+  {за спеціальністю 6.050103 Програмна Інженерія\par}
   {\bfseries\scshape \@title \par}%
   \vspace{\stretch{3}}%
-  { \raggedleft Виконав \@author@status \\ \@author \par}%
+  {\raggedright Виконав \@author@status \\ \@author \par}%
   \vspace{\stretch{1}}%
-  {\raggedleft
+  {\raggedright
      Науковий керівник: \\ \@supervisor@status \\ \@supervisor
    \par}%
+  \vspace{\stretch{1}}%
+  {\raggedright
+     {Засвідчую, що в цій роботі немає \\запозичень з праць інших авторів без \\відповідних посилань}
+     \par
+   \par}%
+
   \vspace{\stretch{2}}%
   \ifx\@accepted@signature\@empty
     \vspace{\stretch{1}}%
   \else
+  {\raggedright
     {Дипломна робота заслухана на засіданні \@accepted@department\\Протокол №{\@accepted@protocol} від \@accepted@date
     \par
     }
-    \vspace{\stretch{1}}%
     {
-      \@accepted@signature \quad \underline{\hspace{2.5cm}}
+      Проватар О. І. \quad \underline{\hspace{2.5cm}}
       \par
     }
+  }
   \fi
   \vspace{\stretch{3}}%
   \@town\ --- \@year}
