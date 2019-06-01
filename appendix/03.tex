@@ -2,6 +2,13 @@
 
 \begin{figure}[h]
 \centering
+\includegraphics[width=0.6\textwidth]{bot-sequence-diagram}
+\caption{Схема роботи системи ботів Telegram}
+\label{fig:bot-sequence-diagram}
+\end{figure}
+
+\begin{figure}[h]
+\centering
 \includegraphics[width=0.5\textwidth]{user-system-overview}
 \caption{Схема роботи користувацької системи}
 \label{fig:user-system-overview}
@@ -9,7 +16,7 @@
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.7\textwidth]{parser-overview}
+\includegraphics[width=0.5\textwidth]{parser-overview}
 \caption{Обробка документів формату CSV у SQL}
 \label{fig:parser-overview}
 \end{figure}
@@ -23,7 +30,7 @@
 
 \pagebreak
 
-\begin{lstlisting}[caption={Реалізація функції Map.},captionpos=b]
+\begin{lstlisting}[caption={Реалізація функції Map},captionpos=b]
 func mapper(input chan []string, output chan model.Operation) {
 	for {
 		msg, opened := <- input
@@ -36,10 +43,9 @@ func mapper(input chan []string, output chan model.Operation) {
 }
 \end{lstlisting}
 
-\begin{lstlisting}[caption={Реалізація функції Reduce.},captionpos=b]
+\begin{lstlisting}[caption={Реалізація функції Reduce},captionpos=b]
 func reducer(input chan []model.Operation, output chan struct{}) {
 	db := database.Must(database.DB())
-	defer db.Close()
 
 	for {
 		operations, open := <-input
