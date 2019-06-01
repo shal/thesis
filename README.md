@@ -4,7 +4,7 @@
 
 ## Overview
 
-**Topic**: Open and Big Data. Development of transport seatch web-service.
+**Topic**: Open and Big Data. Development of transport search web-service.
 
 ## Development
 
