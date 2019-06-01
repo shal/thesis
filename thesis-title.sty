@@ -16,6 +16,7 @@
 \ProcessOptions
 
 \usepackage{textcase}
+\usepackage{setspace}
 
 \def \author #1#2{
   \def\@author{#1}
@@ -23,11 +24,21 @@
 }
 \author{}{}
 
-\def\institution #1#2{%
-  \def\@institution{#1}%
+\def\institution #1#2{
+  \def\@institution{#1}
   \def\@town{#2}
 }
-\institution{}{}
+\institution{}
+
+\def\faculty #1{
+  \def\@faculty{#1}
+}
+\faculty{}
+
+\def\cathedra #1{
+  \def\@cathedra{#1}
+}
+\cathedra{}{}
 
 \def\date#1{\def\@year{#1}}
 \date{}
@@ -53,19 +64,19 @@
 
 \renewenvironment{titlepage}
     {\newpage
-     \pagestyle{empty}%
-     \setcounter{page}{1}%
-     \begin{center}}%
-    {\end{center}%
+     \pagestyle{empty}
+     \setcounter{page}{1}
+     \begin{center}}
+    {\end{center}
      \newpage}
 
-\def\maketitle{\begin{titlepage}%
+\def\maketitle{\begin{titlepage}
   \let\footnotesize\small
   \let\footnoterule\relax
   \let \footnote \thanks
   \@maketitle
-  \end{titlepage}%
-  \setcounter{footnote}{0}%
+  \end{titlepage}
+  \setcounter{footnote}{0}
   \global\let\thanks\relax
   \global\let\maketitle\relax
   \global\let\@thanks\@empty
@@ -82,41 +93,57 @@
   \global\let\date\relax
   \global\let\and\relax
 }
-\def\@maketitle{%
-  {\scshape
-   \@ifundefined{@institution@office}{\relax}{\@institution@office\par}
-   \@institution\par}
-  \vspace{\stretch{4}}%
-  {\MakeTextUppercase{\bf \@metatitle} \\ \MakeTextUppercase{\bf \@nextMetatitle} \par \\ }
-  % {за спеціальністю \@speciality \par}
-  {на тему: \par}
-  {за спеціальністю 6.050103 Програмна Інженерія\par}
-  {\bfseries\scshape \@title \par}%
-  \vspace{\stretch{3}}%
-  {\raggedright Виконав \@author@status \\ \@author \par}%
-  \vspace{\stretch{1}}%
-  {\raggedright
-     Науковий керівник: \\ \@supervisor@status \\ \@supervisor
-   \par}%
-  \vspace{\stretch{1}}%
-  {\raggedright
-     {Засвідчую, що в цій роботі немає \\запозичень з праць інших авторів без \\відповідних посилань}
-     \par
-   \par}%
-
-  \vspace{\stretch{2}}%
-  \ifx\@accepted@signature\@empty
-    \vspace{\stretch{1}}%
-  \else
-  {\raggedright
-    {Дипломна робота заслухана на засіданні \@accepted@department\\Протокол №{\@accepted@protocol} від \@accepted@date
-    \par
-    }
-    {
-      Проватар О. І. \quad \underline{\hspace{2.5cm}}
-      \par
-    }
+\def\@maketitle{
+  {\bfseries \scshape
+    \@ifundefined{@institution@office}{\relax}{\@institution@office\par}
+    \@institution\par
   }
+  {\scshape
+    \@faculty\par
+    \@cathedra\par
+  }
+  \vspace{\stretch{4}}
+  {{\bf \@metatitle} \\ {\bf \@nextMetatitle} \par \\}
+  {за спеціальністю \@speciality \par}
+  {на тему: \par}
+  {\bfseries\scshape \@title \par}
+  \vspace{\stretch{3}}
+  {\raggedright
+    \begin{spacing}{1}
+      Виконав \@author@status \\ \@author \par
+    \end{spacing}
+  }
+  \vspace{\stretch{1}}
+  {\raggedright
+    \begin{spacing}{1}
+      Науковий керівник: \\ \@supervisor@status \\ \@supervisor
+    \end{spacing}
+   \par}
+  \vspace{\stretch{1}}
+  {\raggedright
+  \begin{spacing}{1}
+    \hspace{8cm}{Засвідчую, що в цій роботі немає\par}
+    \hspace{8cm}{запозичень з праць інших авторів без\par}
+    \hspace{8cm}{відповідних посилань}
+    \par
+  \end{spacing}
+   \par}
+
+  \vspace{\stretch{2}}
+  \ifx\@accepted@signature\@empty
+    \vspace{\stretch{1}}
+  \else
+  \begin{spacing}{1}
+  {\raggedright
+    \hspace{8cm}{Роботу розглянуто й допущено до захисту\par}
+    \hspace{8cm}{на засіданні кафедри інтелектуальних\par}
+    \hspace{8cm}{програмних систем\par}
+    \hspace{8cm}{Протокол №{\@accepted@protocol} від {\@accepted@date}\par}
+    \hspace{8cm}{Завідувач кафедри\par}
+    \hspace{8cm}{Проватар О. І.}
+    \par
+  }
+  \end{spacing}
   \fi
-  \vspace{\stretch{3}}%
+  \vspace{\stretch{3}}
   \@town\ --- \@year}

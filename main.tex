@@ -14,8 +14,37 @@
 \usepackage[bachelor]{thesis-title}
 
 \usepackage{listings}
-\usepackage{listings-golang} % import this package after listings
+\usepackage{listings-golang}
 \usepackage{color}
+\usepackage{latexsym}
+\usepackage{wrapfig}
+\usepackage{amsmath}
+\allowdisplaybreaks
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{hhline}
+\usepackage[sort&compress,square,comma, numbers]{natbib}
+\usepackage{moreverb}
+\usepackage{url}
+
+\renewcommand{\baselinestretch}{1.45}
+\emergencystretch = 25pt
+\tolerance=400
+\flushbottom
+
+\newenvironment{sqcases}{
+  \matrix@check\sqcases\env@sqcases
+}{
+  \endarray\right.
+}
+\def\env@sqcases{
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrack
+  \def\arraystretch{1.2}
+  \array{@{}l@{\quad}l@{}}
+}
 
 \lstset{
     frame=single,
@@ -40,17 +69,21 @@
 \title{ВЕЛИКІ ТА ВІДКРИТІ ДАНІ.\\РОЗРОБКА ВЕБ СЕРВІСУ ДЛЯ ПОШУКУ АВТОТРАНСПОРТУ}
 
 \supervisor{Верес Максим Миколайович}
-           {кандидат фізико-математичних наук, доцент}
+           {доцент, кандидат фіз.-мат. наук}
 
 \author{Шанаах Алі Махмуд}{студент 4-го курсу}
 
-\institution{КИЇВСЬКИЙ НАЦІОНАЛЬНИЙ УНІВЕРСИТЕТ\\
-ІМЕНІ ТАРАСА ШЕВЧЕНКА\\
-Кафедра інтелектуальних програмних систем}{Київ}
+\institution{КИЇВСЬКИЙ НАЦІОНАЛЬНИЙ УНІВЕРСИТЕТ ІМЕНІ\\
+ТАРАСА ШЕВЧЕНКA\\
+}{Київ}
 
-\speciality{121 Інженерія програмного забезпечення}
+\faculty{Факультет комп'ютерних наук та кібернетики}
 
-\accepted{кафедри}{11}{13 травня 2019 року}{Підпис}
+\cathedra{Кафедра інтелектуальних програмних систем}
+
+\speciality{6.050103 Програмна Інженерія}
+
+\accepted{кафедри інтелектуальних програмних систем}{11}{13 травня 2019 року}{Підпис}
 
 \date{2019}
 
