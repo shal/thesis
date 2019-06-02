@@ -1,4 +1,4 @@
-\ProvidesPackage{diploma-title}
+\ProvidesPackage{thesis-title}
 \newif\if@coursework
 \@courseworkfalse
 \def \@metatitle {Випускна кваліфікаційна робота}
@@ -28,7 +28,7 @@
   \def\@institution{#1}
   \def\@town{#2}
 }
-\institution{}
+\institution{}{}
 
 \def\faculty #1{
   \def\@faculty{#1}
@@ -98,7 +98,7 @@
     \@ifundefined{@institution@office}{\relax}{\@institution@office\par}
     \@institution\par
   }
-  {\scshape
+  {
     \@faculty\par
     \@cathedra\par
   }
